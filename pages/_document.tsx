@@ -1,15 +1,25 @@
-import * as React from 'react';
-import { Html, Head, Main, NextScript, DocumentProps, DocumentContext } from 'next/document';
+import * as React from "react"
+
+import {
+  DocumentContext,
+  DocumentProps,
+  Head,
+  Html,
+  Main,
+  NextScript,
+} from "next/document"
 import {
   DocumentHeadTags,
   DocumentHeadTagsProps,
   documentGetInitialProps,
-} from '@mui/material-nextjs/v14-pagesRouter';
-import theme, { roboto } from '../src/theme';
+} from "@mui/material-nextjs/v14-pagesRouter"
+import theme, { heebo } from "../src/theme"
 
-export default function MyDocument(props: DocumentProps & DocumentHeadTagsProps) {
+export default function MyDocument(
+  props: DocumentProps & DocumentHeadTagsProps
+) {
   return (
-    <Html lang="en" className={roboto.className}>
+    <Html lang="en" className={heebo.className}>
       <Head>
         {/* PWA primary color */}
         <meta name="theme-color" content={theme.palette.primary.main} />
@@ -22,10 +32,10 @@ export default function MyDocument(props: DocumentProps & DocumentHeadTagsProps)
         <NextScript />
       </body>
     </Html>
-  );
+  )
 }
 
 MyDocument.getInitialProps = async (ctx: DocumentContext) => {
-  const finalProps = await documentGetInitialProps(ctx);
-  return finalProps;
-};
+  const finalProps = await documentGetInitialProps(ctx)
+  return finalProps
+}

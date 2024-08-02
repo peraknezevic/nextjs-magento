@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 export default function HeaderActions() {
   return (
-    <div>
+    <div className="header-actions">
       <Link href="/">
         <Image
           src="/icons/icon-account.svg"

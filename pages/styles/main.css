@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: rgb(35, 31, 32);
+  font-size: 16px;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  font-weight: 700;
+  font-size: 3.25rem;
+}
+
+.header-top-line {
+  height: 2rem;
+  background-color: black;
+}
+
+.header-top-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  gap: 10vw;
+  align-items: center;
+}
+.search-field {
+  flex-grow: 1;
+}
+.header-actions {
+  display: flex;
+  gap: 1rem;
+}
+.header-menu {
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 1rem 2rem;
+}
+
+.header-menu ul {
+  display: flex;
+  gap: 2rem;
+  list-style-type: none;
+}
+
+.header-menu ul li a {
+  text-decoration: none;
+  padding-bottom: 0.8rem;
+  color: rgb(35, 31, 32);
+}
+.header-menu ul li a:hover {
+  border-bottom: 3px solid #ffb634;
+}
+
+.header-submenu {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.hero {
+  background-image: url("/cover.jpg");
+  width: 100wv;
+  height: 22.5rem;
+  background-position: center;
+  background-repeat: none;
+  padding-top: 4rem;
+}
+
+.hero-title {
+  color: white;
+}

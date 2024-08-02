@@ -1,33 +1,86 @@
-import Box from "@mui/material/Box"
-import Container from "@mui/material/Container"
-import Copyright from "../src/Copyright"
-import Header from "../components/header"
-import Link from "../src/Link"
-import ProTip from "../src/ProTip"
-import Typography from "@mui/material/Typography"
+import { Category } from "../lib/types"
+import Header from "./components/header"
+import client from "../lib/apollo-client"
+import { gql } from "@apollo/client"
+import type {
+  InferGetServerSidePropsType,
+  GetServerSideProps,
+  GetStaticProps,
+} from "next"
 
-export default function Home() {
+export const getStaticProps = (async (context) => {
+  const { data } = await client.query({
+    query: gql`
+      query CategoriesList {
+        categories(filters: { ids: { eq: "2" } }) {
+          items {
+            uid
+            name
+            url_path
+            children {
+              uid
+              name
+              url_path
+              children {
+                uid
+                name
+                url_path
+              }
+            }
+          }
+        }
+      }
+    `,
+  })
+
+  return {
+    props: {
+      categories: data.categories.items[0].children,
+    },
+  }
+}) satisfies GetStaticProps<{
+  categories: Category[]
+}>
+
+// export const getServerSideProps = (async () => {
+//   const { data } = await client.query({
+//     query: gql`
+//       query CategoriesList {
+//         categories(filters: { ids: { eq: "2" } }) {
+//           items {
+//             uid
+//             name
+//             url_path
+//             children {
+//               uid
+//               name
+//               url_path
+//               children {
+//                 uid
+//                 name
+//                 url_path
+//               }
+//             }
+//           }
+//         }
+//       }
+//     `,
+//   })
+
+//   return {
+//     props: {
+//       categories: data.categories.items[0].children,
+//     },
+//   }
+// }) satisfies GetServerSideProps<{ categories: Category[] }>
+
+export default function Home({ categories }: { categories: Category[] }) {
   return (
-    <Container maxWidth="lg">
-      <Header />
-      <Box
-        sx={{
-          my: 4,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
-          Material UI - Next.js example in TypeScript
-        </Typography>
-        <Link href="/about" color="secondary">
-          Go to the about page
-        </Link>
-        <ProTip />
-        <Copyright />
-      </Box>
-    </Container>
+    <main>
+      <Header categories={categories} />
+      <div className="hero">
+        <h1>New Tires For Sale Online</h1>
+      </div>
+    </main>
   )
 }

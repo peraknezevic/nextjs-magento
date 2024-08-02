@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@apollo/client": "^3.11.2",
     "@emotion/cache": "latest",
     "@emotion/react": "latest",
     "@emotion/server": "latest",
@@ -16,7 +17,9 @@
     "@mui/icons-material": "next",
     "@mui/material": "next",
     "@mui/material-nextjs": "next",
-    "axios": "^1.7.2",
+    "apollo-server-micro": "^3.13.0",
+    "graphql": "^16.9.0",
+    "graphql-tag": "^2.12.6",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest"
