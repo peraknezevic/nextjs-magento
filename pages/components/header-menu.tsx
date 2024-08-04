@@ -5,7 +5,7 @@ import { useState } from "react"
 
 export default function HeaderMenu({ categories }: { categories: Category[] }) {
   const [open, setOpen] = useState(false)
-  const [sumenuItems, setSubmenuItems] = useState<Category[] | []>([])
+  const [submenuItems, setSubmenuItems] = useState<Category[] | []>([])
 
   return (
     <nav className="header-menu">
@@ -31,7 +31,7 @@ export default function HeaderMenu({ categories }: { categories: Category[] }) {
           </li>
         ))}
       </ul>
-      {open && <HeaderSubmenu categories={sumenuItems} open={open} />}
+      {open && <HeaderSubmenu categories={submenuItems} open={open} />}
     </nav>
   )
 }
